@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.Security.Claims;
+using medmarket.Infrastructure;
+using Microsoft.Data.Entity;
 
 namespace medmarket
 {
@@ -34,6 +36,12 @@ namespace medmarket
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<MedMarketContext>(options =>
+                    options.UseSqlServer(Configuration["Data:MedMarketConnection:ConnectionString"])
+                );
+
             services.AddAuthentication();
             services.AddAuthorization(options =>
             {

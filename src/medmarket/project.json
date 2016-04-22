@@ -1,4 +1,6 @@
 ﻿{
+  "webroot": "wwwroot",
+  "userSecretsId": "MedMarket",
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
